@@ -1,7 +1,6 @@
 <?php
 class Crypto {
 
-    // Constants for key, salt, and nonce sizes, and key derivation parameters
     private static $KEY_SIZE = SODIUM_CRYPTO_AEAD_XCHACHA20POLY1305_IETF_KEYBYTES;
     private static $SALT_SIZE = SODIUM_CRYPTO_PWHASH_SALTBYTES;
     private static $NONCE_SIZE = SODIUM_CRYPTO_AEAD_XCHACHA20POLY1305_IETF_NPUBBYTES;
@@ -10,8 +9,14 @@ class Crypto {
 
     /**
      * Encrypts a plaintext message using a password-derived key and XChaCha20-Poly1305 AEAD.
+     *
+     * @param string $str The plaintext message to encrypt.
+     * @param string $pwd The password used to derive the encryption key.
+     * @param string $additionalData Optional additional authenticated data (AAD).
+     * @return string|false The encrypted message as a hex-encoded string, or false on failure.
      */
     public static function encrypt(string $str, string $pwd, string $additionalData = ''): string|false {
+
         if (empty($str) || empty($pwd)) {
             return false; // Return false if input is empty
         }
@@ -45,14 +50,17 @@ class Crypto {
             return bin2hex($salt . $nonce . $ciphertext);
 
         } catch (SodiumException | Exception $e) {
-
-            //error_log("Crypto encryption error: " . $e->getMessage() . " [Operation: encrypt]");
             return false;
         }
     }
 
     /**
      * Decrypts a hex-encoded ciphertext message.
+     *
+     * @param string $str The encrypted message as a hex-encoded string.
+     * @param string $pwd The password used to derive the decryption key.
+     * @param string $additionalData Optional additional authenticated data (AAD).
+     * @return string|false The decrypted plaintext message, or false on failure.
      */
     public static function decrypt(string $str, string $pwd, string $additionalData = ''): string|false {
 
@@ -61,7 +69,6 @@ class Crypto {
         }
 
         try {
-
             // Decode hex to binary
             $decoded = hex2bin($str);
 
