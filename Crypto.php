@@ -18,10 +18,11 @@ class Crypto {
     public static function encrypt(string $str, string $pwd, string $additionalData = ''): string|false {
 
         if (empty($str) || empty($pwd)) {
-            return false; // Return false if input is empty
+            return false;
         }
 
         try {
+
             // Generate random salt and nonce
             $salt = random_bytes(self::$SALT_SIZE);
             $nonce = random_bytes(self::$NONCE_SIZE);
@@ -69,6 +70,7 @@ class Crypto {
         }
 
         try {
+
             // Decode hex to binary
             $decoded = hex2bin($str);
 
