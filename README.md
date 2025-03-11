@@ -1,67 +1,11 @@
 # Crypto Class
-
 A PHP class for secure encryption and decryption using **XChaCha20-Poly1305** (AEAD) and **Argon2** for password-based key derivation. This class is designed to be simple, secure, and easy to use.
-
----
-
-## Features
-- **Secure Encryption**: Uses the `XChaCha20-Poly1305` algorithm for authenticated encryption.
-- **Password-Based Key Derivation**: Uses `Argon2` (via `sodium_crypto_pwhash`) to derive keys from passwords.
-- **Automatic Salt and Nonce Generation**: The salt and nonce are generated internally and prepended to the ciphertext.
-- **Hex Encoding**: Outputs and inputs are hex-encoded for easy storage and transmission.
-- **Memory Safety**: Sensitive data (e.g., keys) is cleared from memory after use using `sodium_memzero`.
-
----
 
 ## Requirements
 - PHP 7.2 or higher.
 - The [Sodium extension](https://www.php.net/manual/en/book.sodium.php) must be enabled.
 
----
-
-## Installation
-1. Ensure the Sodium extension is installed and enabled in your PHP environment.
-2. Include the `Crypto` class in your project:
-
-```php
-require_once 'path/to/Crypto.php';
-```
-
----
-
-## Usage
-
-### Encryption
-To encrypt a plaintext message, use the `encrypt` method:
-
-```php
-$plaintext = "This is a secret message.";
-$password = "supersecurepassword123";
-$additionalData = "contextual-data"; // Optional
-
-$encrypted = Crypto::encrypt($plaintext, $password, $additionalData);
-if ($encrypted === false) {
-    die("Encryption failed.");
-}
-echo "Encrypted (Hex): " . $encrypted . "\n";
-```
-
-### Decryption
-To decrypt a hex-encoded ciphertext, use the `decrypt` method:
-
-```php
-$decrypted = Crypto::decrypt($encrypted, $password, $additionalData);
-if ($decrypted === false) {
-    die("Decryption failed.");
-}
-echo "Decrypted: " . $decrypted . "\n";
-```
-
----
-
-## Example
-
-### Full Example
+## Implementation
 ```php
 require_once 'Crypto.php';
 
@@ -90,7 +34,12 @@ Encrypted (Hex): 320614d8b88a98adf16a7f810fcdc5b093faa089d8c6cfdab7f751d16c48931
 Decrypted: This is a secret message.
 ```
 
----
+## Features
+- **Secure Encryption**: Uses the `XChaCha20-Poly1305` algorithm for authenticated encryption.
+- **Password-Based Key Derivation**: Uses `Argon2` (via `sodium_crypto_pwhash`) to derive keys from passwords.
+- **Automatic Salt and Nonce Generation**: The salt and nonce are generated internally and prepended to the ciphertext.
+- **Hex Encoding**: Outputs and inputs are hex-encoded for easy storage and transmission.
+- **Memory Safety**: Sensitive data (e.g., keys) is cleared from memory after use using `sodium_memzero`.
 
 ## Methods
 
