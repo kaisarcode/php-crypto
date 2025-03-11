@@ -1,8 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
-require_once __DIR__ . '/../Crypto.php';
+use KaisarCode\Crypto\Crypto;
 
 class CryptoTest extends TestCase {
 

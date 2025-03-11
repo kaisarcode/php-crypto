@@ -1,4 +1,6 @@
 <?php
+namespace KaisarCode\Crypto;
+
 class Crypto {
 
     private static $KEY_SIZE = SODIUM_CRYPTO_AEAD_XCHACHA20POLY1305_IETF_KEYBYTES;
