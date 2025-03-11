@@ -68,4 +68,4 @@ Decrypted: This is a secret message.
 
 ---
 
-Licensed under (MIT License)[https://opensource.org/license/mit]
+Licensed under [MIT License](https://opensource.org/license/mit)
