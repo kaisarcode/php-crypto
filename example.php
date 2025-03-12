@@ -1,5 +1,5 @@
 <?php
-require 'Crypto.php';
+require 'src/KaisarCode/Crypto/Crypto.php';
 
 use KaisarCode\Crypto\Crypto;
 
