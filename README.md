@@ -7,7 +7,7 @@ A PHP class for secure encryption and decryption using **XChaCha20-Poly1305** (A
 
 ## Implementation
 ```php
-require 'vendor/autoload.php';
+require 'Crypto.php';
 
 use KaisarCode\Crypto\Crypto;
 

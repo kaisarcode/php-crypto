@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require 'Crypto.php';
 
 use KaisarCode\Crypto\Crypto;
 
