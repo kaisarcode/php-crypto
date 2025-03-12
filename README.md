@@ -8,6 +8,7 @@ A PHP class for secure encryption and decryption using **XChaCha20-Poly1305** (A
 ## Implementation
 ```php
 require_once 'Crypto.php';
+use KaisarCode\Crypto\Crypto;
 
 $plaintext = "This is a secret message.";
 $password = "supersecurepassword123";
